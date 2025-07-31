@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Client Welcome Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #E6E6FA;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #333;
+            font-size: 30px;
+        }
+
+        h2 {
+            color: #666;
+            font-size: 22px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #CDEAC0;
+            color: #333;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        .btn-logout {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            background-color: #FFDEE9;
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-logout:hover {
+            background-color: #f2c9d6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hi {{ client_name }}, Welcome !!!</h1>
+        <h2>Unoccupied Flats</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Block</th>
+                    <th>Flat No</th>
+                    <th>BHK</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flat in unoccupied_flats %}
+                <tr>
+                    <td>{{ flat[0] }}</td>
+                    <td>{{ flat[1] }}</td>
+                    <td>{{ flat[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn-logout">Logout</a>
